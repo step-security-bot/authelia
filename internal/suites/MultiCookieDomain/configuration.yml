@@ -103,6 +103,7 @@ totp:
 webauthn:
   enable_passkey_login: true
   selection_criteria:
+    attachment: 'platform'
     discoverability: 'preferred'
   metadata:
     enabled: true

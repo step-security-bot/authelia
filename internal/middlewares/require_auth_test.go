@@ -106,7 +106,7 @@ func TestRequireElevated(t *testing.T) {
 			true,
 			false,
 			func(t *testing.T, mock *mocks.MockAutheliaCtx) {
-				mock.StorageMock.EXPECT().LoadUserInfo(mock.Ctx, "john").
+				mock.StorageMock.EXPECT().LoadUserInfo(mock.Ctx, john).
 					Return(model.UserInfo{HasWebAuthn: true}, nil)
 			},
 			fasthttp.StatusForbidden,
@@ -123,7 +123,7 @@ func TestRequireElevated(t *testing.T) {
 			true,
 			false,
 			func(t *testing.T, mock *mocks.MockAutheliaCtx) {
-				mock.StorageMock.EXPECT().LoadUserInfo(mock.Ctx, "john").
+				mock.StorageMock.EXPECT().LoadUserInfo(mock.Ctx, john).
 					Return(model.UserInfo{}, nil)
 			},
 			fasthttp.StatusOK,
@@ -140,7 +140,7 @@ func TestRequireElevated(t *testing.T) {
 			true,
 			false,
 			func(t *testing.T, mock *mocks.MockAutheliaCtx) {
-				mock.StorageMock.EXPECT().LoadUserInfo(mock.Ctx, "john").
+				mock.StorageMock.EXPECT().LoadUserInfo(mock.Ctx, john).
 					Return(model.UserInfo{}, errors.New("example"))
 			},
 			fasthttp.StatusForbidden,
@@ -208,11 +208,11 @@ func TestRequireElevated(t *testing.T) {
 
 			switch tc.level {
 			case authentication.OneFactor:
-				userSession.Username = "john"
+				userSession.Username = john
 				userSession.AuthenticationMethodRefs.UsernameAndPassword = true
 				userSession.AuthenticationMethodRefs.WebAuthn = false
 			case authentication.TwoFactor:
-				userSession.Username = "john"
+				userSession.Username = john
 				userSession.AuthenticationMethodRefs.UsernameAndPassword = true
 				userSession.AuthenticationMethodRefs.WebAuthn = true
 			case authentication.NotAuthenticated:

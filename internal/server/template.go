@@ -283,8 +283,6 @@ func NewTemplatedFileOptions(config *schema.Configuration) (opts *TemplatedFileO
 		EndpointsAuthz:         config.Server.Endpoints.Authz,
 	}
 
-	fmt.Println("passkey", opts.PasskeyLogin)
-
 	if config.PrivacyPolicy.Enabled {
 		opts.PrivacyPolicyURL = config.PrivacyPolicy.PolicyURL.String()
 		opts.PrivacyPolicyAccept = strconv.FormatBool(config.PrivacyPolicy.RequireUserAcceptance)
@@ -325,8 +323,6 @@ func (options *TemplatedFileOptions) CommonData(base, baseURL, domain, nonce, lo
 	if rememberMe != "" {
 		return options.commonDataWithRememberMe(base, baseURL, domain, nonce, logoOverride, rememberMe)
 	}
-
-	fmt.Println("passkey common", options.PasskeyLogin)
 
 	return TemplatedFileCommonData{
 		Base:                   base,
