@@ -54,9 +54,9 @@ var DefaultWebAuthnConfiguration = WebAuthn{
 
 	ConveyancePreference: protocol.PreferIndirectAttestation,
 	SelectionCriteria: WebAuthnSelectionCriteria{
-		Attachment:       protocol.CrossPlatform,
-		Discoverability:  protocol.ResidentKeyRequirementDiscouraged,
-		UserVerification: protocol.VerificationPreferred,
+		Attachment:       "",
+		Discoverability:  "",
+		UserVerification: "",
 	},
 	Metadata: WebAuthnMetadata{
 		Enabled:                       false,

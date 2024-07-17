@@ -392,6 +392,8 @@ func NewDefaultSourcesFiltered(paths []string, filters []BytesFilter, prefix, de
 
 // NewDefaultSourcesWithDefaults returns a slice of Source configured to load from specified YAML files with additional sources.
 func NewDefaultSourcesWithDefaults(paths []string, filters []BytesFilter, prefix, delimiter string, defaults []Source, additionalSources ...Source) (sources []Source) {
+	sources = []Source{NewMapSource(defaultsMapSource)}
+
 	if len(defaults) != 0 {
 		sources = append(sources, defaults...)
 	}

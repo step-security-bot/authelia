@@ -24,6 +24,8 @@ func TestWebAuthnShouldSetDefaultValues(t *testing.T) {
 	assert.Equal(t, schema.DefaultWebAuthnConfiguration.Timeout, config.WebAuthn.Timeout)
 	assert.Equal(t, schema.DefaultWebAuthnConfiguration.ConveyancePreference, config.WebAuthn.ConveyancePreference)
 	assert.Equal(t, schema.DefaultWebAuthnConfiguration.SelectionCriteria.UserVerification, config.WebAuthn.SelectionCriteria.UserVerification)
+	assert.Equal(t, schema.DefaultWebAuthnConfiguration.SelectionCriteria.Discoverability, config.WebAuthn.SelectionCriteria.Discoverability)
+	assert.Equal(t, schema.DefaultWebAuthnConfiguration.SelectionCriteria.Attachment, config.WebAuthn.SelectionCriteria.Attachment)
 }
 
 func TestWebAuthnShouldSetDefaultTimeoutWhenNegative(t *testing.T) {

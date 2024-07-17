@@ -710,7 +710,7 @@ func (ctx *AutheliaCtx) GetWebAuthnProvider() (w *webauthn.WebAuthn, err error) 
 	switch ctx.Configuration.WebAuthn.SelectionCriteria.Discoverability {
 	case protocol.ResidentKeyRequirementRequired:
 		config.AuthenticatorSelection.RequireResidentKey = protocol.ResidentKeyRequired()
-	default:
+	case protocol.ResidentKeyRequirementPreferred, protocol.ResidentKeyRequirementDiscouraged:
 		config.AuthenticatorSelection.RequireResidentKey = protocol.ResidentKeyNotRequired()
 	}
 
